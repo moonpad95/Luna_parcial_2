@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>INICIO SESIÓN</title>
+</head>
+<body>
+    <div class="container-form register">
+        <div class="information">
+            <div class="info-childs">
+                <h2>Bienvenido</h2>
+                <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
+                <input type="button" value="Iniciar Sesión" id="sign-in">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Iniciar Sesión</h2>
+                <form class="form form-register" novalidate id="login-form">
+                    <div>
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input type="text" placeholder="Nombre Usuario" name="userName" id="userName" required>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-lock-alt'></i>
+                            <input type="password" placeholder="Contraseña" name="userPassword" id="userPassword" required>
+                        </label>
+                    </div>
+                    <input type="submit" value="Entrar">
+                    <div class="alerta-error" id="error-message">Todos los campos son obligatorios</div>
+                    <div class="alerta-exito" id="success-message">Inicio de sesión exitoso</div>
+                    <div class="alerta-error" id="login-error-message">Credenciales incorrectas</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('login-form');
+            const errorMessage = document.getElementById('error-message');
+            const loginErrorMessage = document.getElementById('login-error-message');
+            const successMessage = document.getElementById('success-message');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const userName = document.getElementById('userName').value.trim();
+                const userPassword = document.getElementById('userPassword').value.trim();
+
+                if (userName === '' || userPassword === '') {
+                    errorMessage.style.display = 'block';
+                    loginErrorMessage.style.display = 'none';
+                    successMessage.style.display = 'none';
+                } else {
+                    errorMessage.style.display = 'none';
+
+                    if (userName === 'ingreyeslara' && userPassword === 'Utd_2024') {
+                        loginErrorMessage.style.display = 'none';
+                        successMessage.style.display = 'block';
+
+                        // Redirigir a una nueva página después de 2 segundos
+                        setTimeout(function() {
+                            window.location.href = 'https://marlenne798301.projectsutd.online/'; // Cambia esto a tu URL de destino
+                        }, 2000);
+                    } else {
+                        successMessage.style.display = 'none';
+                        loginErrorMessage.style.display = 'block';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
